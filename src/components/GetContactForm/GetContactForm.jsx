@@ -15,9 +15,10 @@ const GetContactForm = ({ onSubmit }) => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    onSubmit({ name, number });
+    onSubmit({ ...state});
     setState({ ...inititalState });
   }
+
 
   const { name, number } = state;
 

@@ -2,30 +2,37 @@ import PropTypes from 'prop-types';
 import styles from "../ContactList/contactList.module.css";
 
 
-const ContactList = ({ contacts, removeContact }) => {
+const ContactsList = ({removeContact, items}) => {
 
-    const contact = contacts.map(({ id, name, number }) => <li key={id} className={styles.itemContact}>	
+    const contacts = items.map(({ id, name, number }) => <li key={id} className={styles.itemContact}>	
 📱 {name}: {number}
         <button onClick={() => removeContact(id)} type="button" className={styles.buttonItem}>Delete</button></li>);
 
     return (
         <ul>
 
-          { contact}
+          { contacts}
         </ul>
     )
 
 }
 
-export default ContactList;
 
-ContactList.defaultProps = {
+
+  
+
+export default ContactsList;
+
+
+
+
+ContactsList.defaultProps = {
     items: []
 }
 
-ContactList.propTypes = {
+ContactsList.propTypes = {
     removeContact: PropTypes.func.isRequired,
-    contacts: PropTypes.arrayOf(PropTypes.shape({
+    items: PropTypes.arrayOf(PropTypes.shape({
         id: PropTypes.string.isRequired,
         name:  PropTypes.string.isRequired,
         number:  PropTypes.string.isRequired,
